@@ -1,0 +1,172 @@
+{
+	"info": {
+		"_postman_id": "8e0f345c-226b-4080-83b0-d6268023114b",
+		"name": "radency",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20761832"
+	},
+	"item": [
+		{
+			"name": "notes",
+			"item": [
+				{
+					"name": "notes",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}notes",
+							"host": [
+								"{{HOST}}notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "statistic",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}notes/stats",
+							"host": [
+								"{{HOST}}notes"
+							],
+							"path": [
+								"stats"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create note",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const jsonBody = JSON.parse(responseBody);\r",
+									"\r",
+									"pm.environment.set(\"noteId\", jsonBody._id);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Some Thought\",\r\n    \"created\": \"Sep 10 2022\",\r\n    \"category\": \"Random Thought\",\r\n    \"content\": \"content\",\r\n    \"dates\": [],\r\n    \"noteStatus\": \"active\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}notes",
+							"host": [
+								"{{HOST}}notes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "note by ID",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"created\": \"Sep 20 2022\",\r\n    \"content\": \"content **************\",\r\n    \"dates\": [\"Sep 10 2022\", \"Sep 20 2022\"]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}notes/:id",
+							"host": [
+								"{{HOST}}notes"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{noteId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "note by ID",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{HOST}}notes/:id",
+							"host": [
+								"{{HOST}}notes"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{noteId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "note by ID",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{access_token}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}notes/:id",
+							"host": [
+								"{{HOST}}notes"
+							],
+							"path": [
+								":id"
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{noteId}}"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
