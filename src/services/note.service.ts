@@ -22,4 +22,21 @@ export const noteService = {
     deleteOne: (params = {}) => {
         return NoteModel.deleteOne(params);
     },
+
+    getStatusStatistics: (status: string) => {
+/*        db.getCollection('notes').aggregate([
+            { $match: { noteStatus: "active" } },
+            { $group: { _id: "$category", total: { $sum: 1 } } }
+        ])
+
+        db.getCollection('notes').aggregate([
+            { $match: { noteStatus: "archived" } },
+            { $group: { _id: "$category", total: { $sum: 1 } } }
+        ])*/
+
+        return NoteModel.aggregate([
+            {$match: {noteStatus: status}},
+            {$group: {_id: "$category", total: {$sum: 1}}}
+        ]);
+    },
 };

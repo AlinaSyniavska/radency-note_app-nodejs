@@ -12,6 +12,9 @@ router.post('/',
     noteMiddleware.isDataValid(noteValidator.newNoteValidator),
     noteController.create);
 
+router.get('/stats',
+    noteController.getStatistics);
+
 router.get('/:id',
     noteMiddleware.isIdValid,
     noteMiddleware.isNotePresent,
@@ -25,10 +28,5 @@ router.delete('/:id',
     noteMiddleware.isIdValid,
     noteMiddleware.isNotePresent,
     noteController.delete);
-
-/*router.get('/stats',
-    // commonMiddleware.isIdValid,
-    // userMiddleware.isUserPresent,
-    noteController.getStatistic);*/
 
 export const noteRouter = router;

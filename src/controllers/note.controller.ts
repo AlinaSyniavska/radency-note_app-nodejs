@@ -1,6 +1,8 @@
 import {NextFunction, Response, Request} from "express";
 import {noteService} from "../services";
 import {IRequestExtended} from "../models";
+import {noteStatusEnum} from "../constants";
+import {noteHelper} from "../helpers";
 
 export const noteController = {
     getAll: async (req: Request, res: Response, next: NextFunction) => {
@@ -54,11 +56,16 @@ export const noteController = {
         }
     },
 
-    getStatistic: async (req: Request, res: Response, next: NextFunction) => {
+    getStatistics: async (req: Request, res: Response, next: NextFunction) => {
         try {
-            // const {id} = req.params;
-            // await userService.deleteOne({_id: id});
-            // res.sendStatus(204);
+            const countActive = await noteService.getStatusStatistics(noteStatusEnum.ACTIVE);
+            const countArchived = await noteService.getStatusStatistics(noteStatusEnum.ARCHIVED);
+
+            const statistics = noteHelper.formStatistics(countActive, countArchived);
+
+            res.json({
+                statistics,
+            });
         } catch (e) {
             next(e);
         }
