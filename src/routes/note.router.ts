@@ -17,20 +17,18 @@ router.get('/:id',
     noteMiddleware.isNotePresent,
     noteController.getById);
 router.patch('/:id',
-    // commonMiddleware.isIdValid,
-    // authMiddleware.checkAccessToken,
-    // commonMiddleware.isDataValid(userValidator.updateUserValidator),
-    // userMiddleware.isUserPresent,
+    noteMiddleware.isIdValid,
+    noteMiddleware.isDataValid(noteValidator.updateNoteValidator),
+    noteMiddleware.isNotePresent,
     noteController.update);
 router.delete('/:id',
-    // commonMiddleware.isIdValid,
-    // authMiddleware.checkAccessToken,
-    // userMiddleware.isUserPresent,
+    noteMiddleware.isIdValid,
+    noteMiddleware.isNotePresent,
     noteController.delete);
 
-router.get('/stats',
+/*router.get('/stats',
     // commonMiddleware.isIdValid,
     // userMiddleware.isUserPresent,
-    noteController.getStatistic);
+    noteController.getStatistic);*/
 
 export const noteRouter = router;

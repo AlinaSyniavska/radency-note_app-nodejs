@@ -36,9 +36,9 @@ export const noteController = {
 
     update: async (req: Request, res: Response, next: NextFunction) => {
         try {
-            // const {id} = req.params;
-            // const updatedUser = await userService.updateOne({_id: id}, req.body);
-            // res.status(201).json(updatedUser);
+            const {id} = req.params;
+            const updatedNote = await noteService.updateOne({_id: id}, req.body);
+            res.status(201).json(updatedNote);
         } catch (e) {
             next(e);
         }
@@ -46,9 +46,9 @@ export const noteController = {
 
     delete: async (req: Request, res: Response, next: NextFunction) => {
         try {
-            // const {id} = req.params;
-            // await userService.deleteOne({_id: id});
-            // res.sendStatus(204);
+            const {id} = req.params;
+            await noteService.deleteOne({_id: id});
+            res.sendStatus(204);
         } catch (e) {
             next(e);
         }
