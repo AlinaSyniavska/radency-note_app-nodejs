@@ -1,7 +1,6 @@
 import {NoteModel} from "../dataBase";
 import {INote} from "../models";
 
-
 export const noteService = {
     findAll: (params = {}) => {
         return NoteModel.find(params);
@@ -24,16 +23,6 @@ export const noteService = {
     },
 
     getStatusStatistics: (status: string) => {
-/*        db.getCollection('notes').aggregate([
-            { $match: { noteStatus: "active" } },
-            { $group: { _id: "$category", total: { $sum: 1 } } }
-        ])
-
-        db.getCollection('notes').aggregate([
-            { $match: { noteStatus: "archived" } },
-            { $group: { _id: "$category", total: { $sum: 1 } } }
-        ])*/
-
         return NoteModel.aggregate([
             {$match: {noteStatus: status}},
             {$group: {_id: "$category", total: {$sum: 1}}}

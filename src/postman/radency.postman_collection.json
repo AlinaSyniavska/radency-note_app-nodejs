@@ -60,7 +60,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"name\": \"Book\",\r\n    \"created\": \"Sep 30 2022\",\r\n    \"category\": \"Task\",\r\n    \"content\": \"Go to The Booking Shop\",\r\n    \"dates\": [],\r\n    \"noteStatus\": \"active\"\r\n}",
+							"raw": "{\r\n    \"name\": \"NASA Open APIs\",\r\n    \"created\": \"Oct 9 2022\",\r\n    \"category\": \"Task\",\r\n    \"content\": \"View NASA Open APIs\",\r\n    \"dates\": [],\r\n    \"noteStatus\": \"active\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -89,7 +89,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"noteStatus\": \"archived\"\r\n}",
+							"raw": "{\r\n    \"noteStatus\": \"archived\",\r\n    \"dates\": [\"Oct 9 2022\", \"Oct 14 2022\"]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
